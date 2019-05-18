@@ -12,7 +12,11 @@ public class PessoaBean {
 	
 	@PostConstruct
 	public void init() {
-		pessoa.setNome("Rafael Monteiro");
+		
+	}
+	
+	public void salva() {
+		
 	}
 
 	public Pessoa getPessoa() {

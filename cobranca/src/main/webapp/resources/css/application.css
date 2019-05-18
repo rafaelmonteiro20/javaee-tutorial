@@ -1,0 +1,29 @@
+.navbar-brand {
+	padding-top: 15px;
+	padding-left: 16px;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #efefef;
+}
+
+.link-panel {
+	float: right;
+	padding: 0px;
+}
+
+.titulo-panel {
+	float: left;
+	padding-top: 2px;
+}
+
+@media (max-width: 575.98px) {
+	.container {
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+	
+	.navbar-brand {
+		padding-left: 25px;
+	}
+}
