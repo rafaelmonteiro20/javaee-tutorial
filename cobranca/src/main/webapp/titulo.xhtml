@@ -1,0 +1,74 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                template="/WEB-INF/template.xhtml">
+
+	<ui:define name="conteudo">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<div class="clearfix">
+					<h1 class="panel-title titulo-panel">Novo Título</h1>
+					<a class="btn btn-link link-panel" href="#{request.contextPath}/titulos.xhtml">
+						Voltar para títulos
+					</a>
+				</div>
+			</div>
+				
+			<div class="panel-body">
+				<h:form prependId="false" styleClass="form-horizontal">
+					<div class="form-group">
+						<label for="descricao" class="col-sm-2 control-label">Descrição</label>
+						<div class="col-sm-4">
+							<h:inputText id="descricao" value="#{tituloBean.titulo.descricao}" styleClass="form-control" />
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="vencimento" class="col-sm-2 control-label">Data Vencimento</label>
+						<div class="col-sm-2">
+							<h:inputText id="vencimento" value="#{tituloBean.titulo.dataVencimento}" styleClass="form-control" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="valor" class="col-sm-2 control-label">Valor</label>
+						<div class="col-sm-2">
+							<h:inputText id="valor" value="#{tituloBean.titulo.valor}" styleClass="form-control" />
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="pessoa" class="col-sm-2 control-label">Pessoa</label>
+						<div class="col-sm-3">
+							<select jsf:id="pessoa" jsf:value="#{tituloBean.titulo.pessoa}"
+									size="1" class="form-control">
+								<f:selectItem itemLabel="Selecione" noSelectionOption="true" />
+							</select>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="status" class="col-sm-2 control-label">Status</label>
+						<div class="col-sm-2">
+							<select jsf:id="status" jsf:value="#{tituloBean.titulo.status}" 
+									size="1" class="form-control">
+								<f:selectItem itemLabel="Selecione" noSelectionOption="true" />
+								<f:selectItems var="status" value="#{tituloBean.statuses}"
+									itemValue="#{status}" itemLabel="#{status.descricao}" />
+							</select>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<h:commandButton value="Salvar" action="#{tituloBean.salva}" 
+								styleClass="btn btn-primary " />
+						</div>
+					</div>
+				</h:form>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>
