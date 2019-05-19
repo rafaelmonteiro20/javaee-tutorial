@@ -1,5 +1,7 @@
 package com.cobranca.bean;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
@@ -13,16 +15,23 @@ public class PessoaBean {
 	@Inject
 	private PessoaService pessoaService;
 	
-	private Pessoa pessoa = new Pessoa();
+	private List<Pessoa> pessoas;
+	
+	private Pessoa pessoa;
 	
 	@PostConstruct
 	public void init() {
-		
+		this.pessoas = pessoaService.todas();
+		this.pessoa = new Pessoa();
 	}
 	
 	public void salva() {
-		pessoaService.salva(pessoa);
-		pessoa = new Pessoa();
+		this.pessoaService.salva(pessoa);
+		init();
+	}
+	
+	public List<Pessoa> getPessoas() {
+		return pessoas;
 	}
 
 	public Pessoa getPessoa() {

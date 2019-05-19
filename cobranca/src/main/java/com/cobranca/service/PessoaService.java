@@ -1,5 +1,7 @@
 package com.cobranca.service;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
@@ -20,6 +22,11 @@ public class PessoaService {
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void salva(Pessoa pessoa) {
 		pessoaDao.salva(pessoa);
+	}
+	
+	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+	public List<Pessoa> todas() {
+		return pessoaDao.todas();
 	}
 	
 }
