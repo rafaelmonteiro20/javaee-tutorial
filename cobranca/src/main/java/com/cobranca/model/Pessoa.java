@@ -17,6 +17,14 @@ public class Pessoa {
 	private String nome;
 
 	
+	public Pessoa() {
+
+	}
+	
+	public Pessoa(Long id) {
+		this.id = id;
+	}
+
 	public Long getId() {
 		return id;
 	}
