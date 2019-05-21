@@ -10,10 +10,14 @@ import com.cobranca.dao.PessoaDao;
 import com.cobranca.model.Pessoa;
 import com.cobranca.model.StatusTitulo;
 import com.cobranca.model.Titulo;
+import com.cobranca.service.TituloService;
 
 @Model
 public class TituloBean {
 
+	@Inject
+	private TituloService tituloService;
+	
 	@Inject
 	private PessoaDao pessoaDao;
 	
@@ -23,11 +27,12 @@ public class TituloBean {
 	
 	@PostConstruct
 	public void init() {
-		this.pessoas = pessoaDao.todas();
+		this.pessoas = this.pessoaDao.todas();
 	}
 	
-	public void salva() {
-
+	public String salva() {
+		this.tituloService.salva(titulo);
+		return "/titulos.xhtml?faces-redirect=true";
 	}
 	
 	public StatusTitulo[] getStatuses() {
