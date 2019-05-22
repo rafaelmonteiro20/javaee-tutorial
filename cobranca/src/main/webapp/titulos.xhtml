@@ -1,0 +1,55 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                template="/WEB-INF/template.xhtml">
+
+	<ui:define name="conteudo">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<div class="clearfix">
+					<h1 class="panel-title titulo-panel">Títulos</h1>
+					<a class="btn btn-link link-panel" href="#{request.contextPath}/titulo.xhtml">
+						Novo Título
+					</a>
+					<a class="btn btn-link link-panel mr-15" href="#{request.contextPath}/pessoas.xhtml">
+						Pessoas
+					</a>
+				</div>
+			</div>
+				
+			<div class="panel-body">
+				<div class="cb-table">
+					<h:dataTable var="titulo" value="#{listTitulosBean.titulos}" styleClass="table">
+						<h:column>
+							<f:facet name="header">Descrição</f:facet>
+							#{titulo.descricao}
+						</h:column>
+						<h:column>
+							<f:facet name="header">Pessoa</f:facet>
+							#{titulo.pessoa.nome}
+						</h:column>
+						<h:column>
+							<f:facet name="header">Data Vencimento</f:facet>
+							<h:outputText value="#{titulo.dataVencimento}">
+								<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Fortaleza" />
+							</h:outputText>
+						</h:column>
+						<h:column>
+							<f:facet name="header">Status</f:facet>
+							#{titulo.status.descricao}
+						</h:column>
+						<h:column>
+							<f:facet name="header">Valor</f:facet>
+							<h:outputText value="#{titulo.valor}">
+								<f:convertNumber pattern="#,##0.00" />
+							</h:outputText>
+						</h:column>
+					</h:dataTable>
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>
