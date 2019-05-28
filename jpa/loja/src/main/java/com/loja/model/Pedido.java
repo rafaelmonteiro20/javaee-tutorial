@@ -14,43 +14,41 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="pedido")
+@Table(name = "pedido")
 public class Pedido {
 
 	@Id
 	private Integer id;
-	
+
 	private char status;
-	
+
 	private int desconto;
-	
+
 	private String informacaoEntrega;
-	
+
 	@Temporal(TemporalType.TIME)
 	@Column(name = "ultima_atualizacao")
 	private Date ultimaAtualizacao;
-	
-	@OneToMany(mappedBy="pedido", cascade = CascadeType.ALL)
+
+	@OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
 	private Collection<Item> itens = new ArrayList<>();
-	
-	
+
 	public Pedido() {
-        this.ultimaAtualizacao = new Date();
-    }
+		this.ultimaAtualizacao = new Date();
+	}
 
 	public Pedido(Integer id, char status, int desconto, String informacaoEntrega) {
-        this.id = id;
-        this.status = status;
-        this.desconto = desconto;
-        this.informacaoEntrega = informacaoEntrega;
-        this.ultimaAtualizacao = new Date();
-    }
+		this.id = id;
+		this.status = status;
+		this.desconto = desconto;
+		this.informacaoEntrega = informacaoEntrega;
+		this.ultimaAtualizacao = new Date();
+	}
 
-	
 	public Integer getId() {
 		return id;
 	}
-	
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
@@ -62,7 +60,7 @@ public class Pedido {
 	public void setStatus(char status) {
 		this.status = status;
 	}
-	
+
 	public int getDesconto() {
 		return desconto;
 	}
@@ -74,7 +72,6 @@ public class Pedido {
 	public Date getUltimaAtualizacao() {
 		return ultimaAtualizacao;
 	}
-	
 
 	public String getInformacaoEntrega() {
 		return informacaoEntrega;
@@ -83,11 +80,11 @@ public class Pedido {
 	public void setInformacaoEntrega(String informacaoEntrega) {
 		this.informacaoEntrega = informacaoEntrega;
 	}
-	
+
 	public Collection<Item> getItens() {
 		return itens;
 	}
-	
+
 	public int getProximoId() {
 		return this.itens.size() + 1;
 	}

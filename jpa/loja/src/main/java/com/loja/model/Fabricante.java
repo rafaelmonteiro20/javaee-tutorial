@@ -14,24 +14,23 @@ public class Fabricante {
 
 	@Id
 	private Integer id;
-    
-	private String nome;
-    
-	private String endereco;
-   
-	private String contato;
-    
-	private String telefone;
-   
-	@OneToMany(mappedBy="fabricante", cascade = CascadeType.ALL)
-	private Collection<PecaFabricante> pecas;
-    
-	
-    public Fabricante() {
-    	
-    }
 
-    public Fabricante(Integer id, String nome, String endereco, String contato, String telefone) {
+	private String nome;
+
+	private String endereco;
+
+	private String contato;
+
+	private String telefone;
+
+	@OneToMany(mappedBy = "fabricante", cascade = CascadeType.ALL)
+	private Collection<PecaFabricante> pecas;
+
+	public Fabricante() {
+
+	}
+
+	public Fabricante(Integer id, String nome, String endereco, String contato, String telefone) {
 		this.id = id;
 		this.nome = nome;
 		this.endereco = endereco;
@@ -39,7 +38,7 @@ public class Fabricante {
 		this.telefone = telefone;
 	}
 
-    public Integer getId() {
+	public Integer getId() {
 		return id;
 	}
 
@@ -78,13 +77,13 @@ public class Fabricante {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-	
+
 	public Collection<PecaFabricante> getPecas() {
 		return pecas;
 	}
-	
+
 	public void addPeca(PecaFabricante peca) {
 		this.pecas.add(peca);
 	}
-	
+
 }
