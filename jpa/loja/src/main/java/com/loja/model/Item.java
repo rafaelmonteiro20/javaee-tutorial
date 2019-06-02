@@ -8,7 +8,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "pedido")
+@Table(name = "item")
 @IdClass(ItemId.class)
 public class Item {
 
@@ -23,7 +23,7 @@ public class Item {
 	private int quantidade;
 	
 	@ManyToOne
-	@JoinColumn(name = "peca_fabricante_number")
+	@JoinColumn(name = "peca_fabricante_id")
 	private PecaFabricante peca;
 	
 	

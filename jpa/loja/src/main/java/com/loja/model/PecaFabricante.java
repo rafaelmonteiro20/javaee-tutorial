@@ -1,6 +1,8 @@
 package com.loja.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
@@ -13,7 +15,8 @@ import javax.persistence.Table;
 public class PecaFabricante {
 
 	@Id
-	private Long numeroPeca;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
 	private String descricao;
 
@@ -41,12 +44,8 @@ public class PecaFabricante {
 		this.peca.setPecaFabricante(this);
 	}
 
-	public Long getNumeroPeca() {
-		return numeroPeca;
-	}
-
-	public void setNumeroPeca(Long numeroPeca) {
-		this.numeroPeca = numeroPeca;
+	public Long getId() {
+		return id;
 	}
 
 	public String getDescricao() {

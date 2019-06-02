@@ -10,29 +10,30 @@ public final class ItemId implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private Integer pedidoId;
-	private int itemId;
+	private int id;
+	private Integer pedido;
 
+	
 	public ItemId() {
 	
 	}
 	
-	public ItemId(Integer pedidoId, int itemId) {
-	    this.pedidoId = pedidoId;
-	    this.itemId = itemId;
+	public ItemId(int id, Integer pedido) {
+		this.id = id;
+	    this.pedido = pedido;
 	}
 	
-	public Integer getPedidoId() {
-		return pedidoId;
+	public int getId() {
+		return id;
 	}
 	
-	public int getItemId() {
-		return itemId;
+	public Integer getPedido() {
+		return pedido;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(pedidoId, itemId);
+		return Objects.hash(id, pedido);
 	}
 
 	@Override
@@ -44,13 +45,7 @@ public final class ItemId implements Serializable {
 			return false;
 		}
 		ItemId other = (ItemId) obj;
-		return Objects.equals(pedidoId, other.pedidoId)
-					&& itemId == other.itemId;
+		return id == other.id && Objects.equals(pedido, other.pedido);
 	}
 
-	@Override
-	public String toString() {
-		return pedidoId + "-" + itemId;
-	}
-	  
 }
