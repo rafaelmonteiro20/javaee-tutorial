@@ -7,8 +7,6 @@ import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -25,7 +23,6 @@ import javax.persistence.TemporalType;
 public class Pedido {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
 	private char status;
@@ -91,6 +88,10 @@ public class Pedido {
 
 	public Collection<Item> getItens() {
 		return itens;
+	}
+	
+	public void addItem(Item item) {
+		itens.add(item);
 	}
 
 	public int getProximoId() {

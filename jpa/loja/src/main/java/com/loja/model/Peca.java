@@ -1,5 +1,6 @@
 package com.loja.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -47,7 +48,7 @@ public class Peca {
 	private Peca pecaPai;
 
 	@OneToMany(mappedBy = "pecaPai")
-	private List<Peca> pecas;
+	private List<Peca> pecas = new ArrayList<>();
 
 	@OneToOne(mappedBy = "peca")
 	private PecaFabricante pecaFabricante;
@@ -117,6 +118,11 @@ public class Peca {
 
 	public List<Peca> getPecas() {
 		return pecas;
+	}
+	
+	public void addPeca(Peca peca) {
+		peca.setPecaPai(this);
+		pecas.add(peca);
 	}
 
 	public PecaFabricante getPecaFabricante() {

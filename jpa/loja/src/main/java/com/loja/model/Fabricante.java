@@ -1,5 +1,6 @@
 package com.loja.model;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.CascadeType;
@@ -24,7 +25,7 @@ public class Fabricante {
 	private String telefone;
 
 	@OneToMany(mappedBy = "fabricante", cascade = CascadeType.ALL)
-	private Collection<PecaFabricante> pecas;
+	private Collection<PecaFabricante> pecas = new ArrayList<>();
 
 	public Fabricante() {
 
@@ -83,6 +84,7 @@ public class Fabricante {
 	}
 
 	public void addPeca(PecaFabricante peca) {
+		peca.setFabricante(this);
 		this.pecas.add(peca);
 	}
 
