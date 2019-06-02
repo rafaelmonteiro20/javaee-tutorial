@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+	<ui:composition template="/WEB-INF/template.xhtml">
+		<ui:define name="conteudo">
+			<h:dataTable var="pedido" value="#{pedidoBean.pedidos}" styleClass="table">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="ID" />
+					</f:facet>
+					<h:form>
+						<h:commandLink id="pedido_id_link" action="lineItem">
+							<h:outputText value="#{pedido.id}" />
+							<f:setPropertyActionListener target="#{pedidoBean.pedidoSelecionado}" value="#{pedido.id}" />
+						</h:commandLink>
+					</h:form>
+				</h:column>
+			
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Info. Entrega" />
+					</f:facet>
+					<h:outputText value="#{pedido.informacaoEntrega}" />
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Status" />
+					</f:facet>
+					<h:outputText value="#{pedido.status}" />
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Última Atualização" />
+					</f:facet>
+					<h:outputText value="#{pedido.ultimaAtualizacao}" />
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Desconto" />
+					</f:facet>
+					<h:outputText value="#{pedido.desconto}%" />
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Ações" />
+					</f:facet>
+					<h:form>
+						<h:commandLink value="Excluir" actionListener="#{pedidoBean.removePedido}" action="pedido">
+							<f:param name="pedidoId" value="#{pedido.id}" />
+						</h:commandLink>
+					</h:form>
+				</h:column>
+			</h:dataTable>
+		</ui:define>
+	</ui:composition>
+</html>

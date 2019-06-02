@@ -56,6 +56,16 @@ public class Peca {
 	public Peca() {
 
 	}
+	
+	public Peca(String numero, int revisao, String descricao, 
+				String especificacao, Date dataRevisao) {
+		
+		this.numero = numero;
+		this.revisao = revisao;
+		this.descricao = descricao;
+		this.especificacao = especificacao;
+		this.dataRevisao = dataRevisao;
+	}
 
 	public String getNumero() {
 		return numero;
