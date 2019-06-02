@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+	<ui:composition template="/WEB-INF/template.xhtml">
+       	<ui:define name="conteudo">
+        	<h:form>
+				<h:dataTable var="item" value="#{pedidoBean.itens}" styleClass="table">
+                 	<h:column>
+                    	<f:facet name="header">
+                        	<h:outputText value="ID" />
+                        </f:facet>
+						<h:outputText value="#{item.id}" />
+                    </h:column>
+					
+					<h:column>
+						<f:facet name="header">
+                       		<h:outputText value="Quantidade" />
+						</f:facet>
+						<h:outputText value="#{item.quantidade}" />
+					</h:column>
+					
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Número da Peça" />
+						</f:facet>
+						<h:outputText value="#{item.peca.id}" />
+					</h:column>
+				</h:dataTable>
+
+				<br />
+
+                <h:dataTable id="tabelaPecasPedido" var="peca" value="#{pedidoBean.pecasEncomentadas}"
+                			 styleClass="table">
+                			 
+                	<h:column>
+                    	<f:facet name="header">
+                        	<h:outputText value="Número" />
+                       	</f:facet>
+                       	<h:outputText value="#{peca.numero}" />
+					</h:column>
+					
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Revisão" />
+						</f:facet>
+						<h:outputText value="#{peca.revisao}" />
+					</h:column>
+					
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Fabricante Número da Peça" />
+						</f:facet>
+						<h:outputText value="#{peca.pecaFabricante.id}" />
+					</h:column>
+					
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Adicionar" />
+						</f:facet>
+						<h:commandButton value="Add" action="#{pedidoBean.adicionaItem}" />
+					</h:column>
+				</h:dataTable>
+				<br />
+
+           		<a href="#{request.contextPath}/pedido.xhtml" class="btn btn-default">Voltar ao pedido</a>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</html>
