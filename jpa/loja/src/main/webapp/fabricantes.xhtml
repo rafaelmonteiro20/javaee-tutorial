@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+	<ui:composition template="/WEB-INF/template.xhtml">
+		<ui:define name="conteudo">
+			<h4>Fabricantes</h4>
+	
+			<h:form>
+				<div class="form-group">
+					<label for="fabricante">Nome Fabricante</label>
+					<h:inputText id="fabricante" value="#{fabricanteBean.nomeFabricante}" 
+						required="true" styleClass="form-control" requiredMessage="Campo obrigatório."/>
+					<h:message for="fabricante" styleClass="label label-danger" />
+				</div>
+	
+				<h:commandButton id="pesquisar" action="#{fabricanteBean.pesquisa}"
+					value="Pesquisar" styleClass="btn btn-primary" />
+			</h:form>
+			
+			<br/>
+	
+			<h:dataTable var="fabricante" value="#{fabricanteBean.fabricantes}" styleClass="table">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Fabricante" />
+					</f:facet>
+					<h:outputText value="#{fabricante.nome}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Telefone" />
+					</f:facet>
+					<h:outputText value="#{fabricante.telefone}" />
+				</h:column>
+			</h:dataTable>
+		</ui:define>
+	</ui:composition>
+</html>

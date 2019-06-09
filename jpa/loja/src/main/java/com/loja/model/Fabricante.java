@@ -6,9 +6,13 @@ import java.util.Collection;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+@NamedQuery(
+   name="Fabricante.porNome", query="SELECT f FROM Fabricante f WHERE LOCATE(:nome, f.nome) > 0"
+)
 @Entity
 @Table(name = "fabricante")
 public class Fabricante {
