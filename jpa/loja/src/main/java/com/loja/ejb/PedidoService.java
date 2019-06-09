@@ -79,8 +79,11 @@ public class PedidoService {
 	}
 	
 	public void criaPedido(Integer pedidoId, char status, int desconto, String informacaoEntrega) {
+		this.salvaPedido(new Pedido(pedidoId, status, desconto, informacaoEntrega));
+	}
+	
+	public void salvaPedido(Pedido pedido) {
 		try {
-			Pedido pedido = new Pedido(pedidoId, status, desconto, informacaoEntrega);
 			manager.persist(pedido);
 		} catch (Exception e) {
 			throw new EJBException(e.getMessage());

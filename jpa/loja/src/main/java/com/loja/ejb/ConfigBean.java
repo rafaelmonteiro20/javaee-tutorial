@@ -39,13 +39,13 @@ public class ConfigBean {
 		pedidoService.criaPecaFabricante("SDFG-ERTY-BN", 7, "PECA5", 345.87, 100);
 
 		Integer pedido = new Integer(1111);
-		pedidoService.criaPedido(pedido, 'N', 10, "333 New Court, New City, CA 90000");
+		pedidoService.criaPedido(pedido, 'P', 10, "333 New Court, New City, CA 90000");
 		pedidoService.addItem(pedido, "1234-5678-01", 1, 3);
 		pedidoService.addItem(pedido, "9876-4321-02", 2, 5);
 		pedidoService.addItem(pedido, "ABCD-XYZW-FF", 5, 7);
 
 		pedido = new Integer(4312);
-		pedidoService.criaPedido(pedido, 'N', 0, "333 New Court, New City, CA 90000");
+		pedidoService.criaPedido(pedido, 'P', 0, "333 New Court, New City, CA 90000");
 		pedidoService.addItem(pedido, "SDFG-ERTY-BN", 7, 1);
 		pedidoService.addItem(pedido, "ABCD-XYZW-FF", 5, 3);
 		pedidoService.addItem(pedido, "1234-5678-01", 1, 15);
