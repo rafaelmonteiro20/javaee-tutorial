@@ -102,4 +102,13 @@ public class PedidoService {
 		}
 	}
 
+	public void removePedido(Integer id) {
+		try {
+            Pedido pedido = manager.find(Pedido.class, id);
+            manager.remove(pedido);
+        } catch (Exception e) {
+            throw new EJBException(e.getMessage());
+        }
+	}
+
 }

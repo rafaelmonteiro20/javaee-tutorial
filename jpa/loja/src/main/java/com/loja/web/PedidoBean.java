@@ -8,6 +8,8 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.component.UIParameter;
+import javax.faces.event.ActionEvent;
 
 import com.loja.ejb.PedidoService;
 import com.loja.model.Item;
@@ -32,31 +34,41 @@ public class PedidoBean implements Serializable {
 
 	private Integer pedidoSelecionado;
 	
+	private List<Pedido> pedidos;
+	
 	@PostConstruct
 	public void init() {
 		pedido = new Pedido();
+		pedidos = pedidoService.todosPedidos();
 	}
-	
 	
 	public void salvaPedido() {
 		try {
 			pedidoService.salvaPedido(pedido);
 			pedido = new Pedido();
-        } catch (Exception e) {
-            logger.warning("Problema ao criar um novo pedido.");
-        }
+			init();
+		} catch (Exception e) {
+			logger.warning("Problema ao criar um novo pedido.");
+		}
 	}
 	
 	public void adicionaItem() {
 		
 	}
 	
-	public void removePedido() {
-		
+	public void removePedido(ActionEvent event) {
+		try {
+			UIParameter param = (UIParameter) event.getComponent().findComponent("removePedidoId");
+			Integer id = Integer.parseInt(param.getValue().toString());
+			pedidoService.removePedido(id);
+			init();
+		} catch (NumberFormatException e) {
+
+		}
 	}
 	
 	public List<Pedido> getPedidos() {
-		return pedidoService.todosPedidos();
+		return pedidos;
 	}
 	
 	public List<Item> getItens() {

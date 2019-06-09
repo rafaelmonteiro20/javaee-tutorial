@@ -53,8 +53,8 @@
 						<h:outputText value="Ações" />
 					</f:facet>
 					<h:form>
-						<h:commandLink value="Excluir" actionListener="#{pedidoBean.removePedido}" action="pedido">
-							<f:param name="pedidoId" value="#{pedido.id}" />
+						<h:commandLink value="Excluir" actionListener="#{pedidoBean.removePedido}" action="pedidos">
+							<f:param id="removePedidoId" name="pedidoId" value="#{pedido.id}" />
 						</h:commandLink>
 					</h:form>
 				</h:column>
