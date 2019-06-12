@@ -10,6 +10,10 @@ public class Negociacao {
 	private final LocalDate data;
 	
 	public Negociacao(double preco, int quantidade, LocalDate data) {
+		if(data == null) {
+			throw new IllegalArgumentException("Data nao pode ser null");
+		}
+		
 		this.preco = preco;
 		this.quantidade = quantidade;
 		this.data = data;
