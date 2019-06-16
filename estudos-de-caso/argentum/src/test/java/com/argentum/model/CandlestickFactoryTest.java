@@ -73,4 +73,52 @@ public class CandlestickFactoryTest {
 		
 	}
 	
+	@Test
+	public void criaCandleComNegociacoesEmOrdemCrescenteDeValor() {
+		
+		LocalDate hoje = LocalDate.now();
+		
+		Negociacao negociacao1 = new Negociacao(10.0, 100, hoje);
+		Negociacao negociacao2 = new Negociacao(12.0, 100, hoje);
+		Negociacao negociacao3 = new Negociacao(14.0, 100, hoje);
+		Negociacao negociacao4 = new Negociacao(15.0, 100, hoje);
+		
+		List<Negociacao> negociacoes = Arrays.asList(negociacao1, negociacao2, 
+					negociacao3, negociacao4);
+		
+		CandlestickFactory factory = new CandlestickFactory();
+		Candlestick candle = factory.criaCandleParaData(hoje, negociacoes);
+		
+		assertEquals(10.0, candle.getAbertura(), 0.0001);
+		assertEquals(15.0, candle.getFechamento(), 0.0001);
+		assertEquals(10.0, candle.getMinimo(), 0.0001);
+		assertEquals(15.0, candle.getMaximo(), 0.0001);
+		assertEquals(5100.0, candle.getVolume(), 0.0001);
+		
+	}
+	
+	@Test
+	public void criaCandleComNegociacoesEmOrdemDescrescenteDeValor() {
+		
+		LocalDate hoje = LocalDate.now();
+		
+		Negociacao negociacao1 = new Negociacao(15.0, 100, hoje);
+		Negociacao negociacao2 = new Negociacao(14.0, 100, hoje);
+		Negociacao negociacao3 = new Negociacao(12.0, 100, hoje);
+		Negociacao negociacao4 = new Negociacao(10.0, 100, hoje);
+		
+		List<Negociacao> negociacoes = Arrays.asList(negociacao1, negociacao2, 
+					negociacao3, negociacao4);
+		
+		CandlestickFactory factory = new CandlestickFactory();
+		Candlestick candle = factory.criaCandleParaData(hoje, negociacoes);
+		
+		assertEquals(15.0, candle.getAbertura(), 0.0001);
+		assertEquals(10.0, candle.getFechamento(), 0.0001);
+		assertEquals(10.0, candle.getMinimo(), 0.0001);
+		assertEquals(15.0, candle.getMaximo(), 0.0001);
+		assertEquals(5100.0, candle.getVolume(), 0.0001);
+		
+	}
+	
 }
