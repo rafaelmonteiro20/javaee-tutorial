@@ -30,8 +30,9 @@ public class TarefasBean implements Serializable {
 
 	private List<Tarefa> tarefas;
 
-	public void criaTarefa() {
+	public String criaTarefa() {
 		this.tarefa = service.criaTarefa(descricao);
+		return "/lista.xhtml?faces-redirect=true";
 	}
 
 	public String getDescricao() {
@@ -47,6 +48,9 @@ public class TarefasBean implements Serializable {
 	}
 
 	public List<Tarefa> getTarefas() {
+		if (tarefas == null) {
+			tarefas = service.getTarefas();
+		}
 		return tarefas;
 	}
 

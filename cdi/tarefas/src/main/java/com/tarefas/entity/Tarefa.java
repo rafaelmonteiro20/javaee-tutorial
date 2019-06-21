@@ -11,8 +11,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-@Table
-@Entity(name = "tarefa")
+@Entity
+@Table(name = "tarefa")
 public class Tarefa {
 
 	@Id
@@ -32,6 +32,7 @@ public class Tarefa {
 	
 	public Tarefa(String descricao) {
 		this.descricao = descricao;
+		this.dataCriacao = new Date();
 	}
 
 	public Long getId() {

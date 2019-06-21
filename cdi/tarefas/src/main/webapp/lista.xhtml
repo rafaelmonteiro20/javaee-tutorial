@@ -1,0 +1,38 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                template="/WEB-INF/template.xhtml">
+
+	<ui:define name="conteudo">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<div class="clearfix">
+					<h1 class="panel-title titulo-panel">Tarefas</h1>
+					<a class="btn btn-link link-panel" href="#{request.contextPath}/form.xhtml">
+						Nova Tarefa
+					</a>
+				</div>
+			</div>
+				
+			<div class="panel-body">
+				<div class="cb-table">
+					<h:dataTable var="tarefa" value="#{tarefasBean.tarefas}" styleClass="table">
+						<h:column>
+							<f:facet name="header">Data Criação</f:facet>
+							<h:outputText value="#{tarefa.dataCriacao}">
+								<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Fortaleza" />
+							</h:outputText>
+						</h:column>
+						<h:column>
+							<f:facet name="header">Descrição</f:facet>
+							#{tarefa.descricao}
+						</h:column>
+					</h:dataTable>
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>
