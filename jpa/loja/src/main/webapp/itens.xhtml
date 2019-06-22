@@ -6,6 +6,8 @@
 
 	<ui:composition template="/WEB-INF/template.xhtml">
        	<ui:define name="conteudo">
+       		<h4>Itens do pedido ##{pedidoBean.pedidoSelecionado}</h4>
+       	
         	<h:form>
 				<h:dataTable var="item" value="#{pedidoBean.itens}" styleClass="table">
                  	<h:column>
@@ -48,25 +50,44 @@
 						</f:facet>
 						<h:outputText value="#{peca.revisao}" />
 					</h:column>
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Descrição" />
+						</f:facet>
+						<h:outputText value="#{peca.descricao}" />
+					</h:column>
 					
 					<h:column>
 						<f:facet name="header">
-							<h:outputText value="Fabricante Número da Peça" />
+							<h:outputText value="Peça Fabricante" />
 						</f:facet>
-						<h:outputText value="#{peca.pecaFabricante.id}" />
+						<h:outputText value="#{peca.pecaFabricante.descricao}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Preço" />
+						</f:facet>
+						<h:outputText value="#{peca.pecaFabricante.preco}">
+							<f:convertNumber pattern="#,##0.00" />
+						</h:outputText>
 					</h:column>
 					
 					<h:column>
 						<f:facet name="header">
 							<h:outputText value="Adicionar" />
 						</f:facet>
-						<h:commandButton value="Add" action="#{pedidoBean.adicionaItem}" />
+						<h:commandButton value="Add" action="#{pedidoBean.adicionaItem}"
+							styleClass="btn btn-default" />
 					</h:column>
 				</h:dataTable>
 				<br />
 
-           		<a href="#{request.contextPath}/pedido.xhtml" class="btn btn-default">Voltar ao pedido</a>
+           		<a href="#{request.contextPath}/pedidos.xhtml" class="btn btn-primary">Voltar aos pedidos</a>
 			</h:form>
+			
+			<div style="height:50px" />
 		</ui:define>
 	</ui:composition>
 </html>

@@ -12,12 +12,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+@NamedQuery(
+	name="Peca.buscaTodas", query="SELECT p FROM Peca p ORDER BY p.numero"
+)
 @Entity
 @Table(name = "peca")
 @IdClass(PecaId.class)

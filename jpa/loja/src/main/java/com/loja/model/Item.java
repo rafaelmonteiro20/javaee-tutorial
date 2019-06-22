@@ -1,11 +1,19 @@
 package com.loja.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+
+@NamedQueries(
+	@NamedQuery(name = "Item.buscaTodosPorPedido", 
+		query = "SELECT i FROM Item i WHERE i.pedido.id = :pedidoID ORDER BY i.id")
+)
 
 @Entity
 @Table(name = "item")
@@ -16,7 +24,7 @@ public class Item {
 	private int id;
 	
 	@Id
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "pedido_id")
 	private Pedido pedido;
 	

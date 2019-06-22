@@ -111,4 +111,15 @@ public class PedidoService {
         }
 	}
 
+	public List<Item> buscaItens(Integer pedidoID) {
+		return manager.createNamedQuery("Item.buscaTodosPorPedido", Item.class)
+                .setParameter("pedidoID", pedidoID)
+                .getResultList();
+	}
+
+	public List<Peca> buscaTodasPecas() {
+		return manager.createNamedQuery("Peca.buscaTodas", Peca.class)
+					.getResultList();
+	}
+
 }

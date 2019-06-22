@@ -31,10 +31,12 @@ public class PedidoBean implements Serializable {
 	private PedidoService pedidoService;
 	
 	private Pedido pedido;
-
 	private Integer pedidoSelecionado;
 	
 	private List<Pedido> pedidos;
+	private List<Item> itens;
+	private List<Peca> pecas;
+	
 	
 	@PostConstruct
 	public void init() {
@@ -63,8 +65,13 @@ public class PedidoBean implements Serializable {
 			pedidoService.removePedido(id);
 			init();
 		} catch (NumberFormatException e) {
-
+			logger.warning("Problema na conversao do pedido id.");
 		}
+	}
+	
+	public void buscaItensEPecas() {
+		this.itens = pedidoService.buscaItens(pedidoSelecionado);
+		this.pecas = pedidoService.buscaTodasPecas();
 	}
 	
 	public List<Pedido> getPedidos() {
@@ -72,11 +79,11 @@ public class PedidoBean implements Serializable {
 	}
 	
 	public List<Item> getItens() {
-		return null;
+		return itens;
 	}
 	
 	public List<Peca> getPecasEncomentadas() {
-		return null;
+		return pecas;
 	}
 	
 	public Pedido getPedido() {
