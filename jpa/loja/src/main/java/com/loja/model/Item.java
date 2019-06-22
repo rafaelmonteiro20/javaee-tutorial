@@ -12,9 +12,9 @@ import javax.persistence.Table;
 
 @NamedQueries(
 	@NamedQuery(name = "Item.buscaTodosPorPedido", 
-		query = "SELECT i FROM Item i WHERE i.pedido.id = :pedidoID ORDER BY i.id")
+		query = " SELECT i FROM Item i INNER JOIN FETCH i.peca "
+			  + " WHERE i.pedido.id = :pedidoID ORDER BY i.id ")
 )
-
 @Entity
 @Table(name = "item")
 @IdClass(ItemId.class)
@@ -76,6 +76,10 @@ public class Item {
 	
 	public void setPedido(Pedido pedido) {
 		this.pedido = pedido;
+	}
+	
+	public double getTotal() {
+		return quantidade * peca.getPreco();
 	}
 
 }

@@ -2,6 +2,7 @@ package com.loja.web;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
@@ -54,8 +55,13 @@ public class PedidoBean implements Serializable {
 		}
 	}
 	
-	public void adicionaItem() {
-		
+	public void adicionaItem(Peca peca) {
+		try {
+			pedidoService.addItem(this.pedidoSelecionado, peca.getNumero(), peca.getRevisao(), 1);
+			itens = pedidoService.buscaItens(pedidoSelecionado);
+		} catch (Exception e) {
+			logger.log(Level.WARNING, "Problema ao adicionar item ao pedido {0}", pedidoSelecionado);
+		}
 	}
 	
 	public void removePedido(ActionEvent event) {
@@ -70,8 +76,7 @@ public class PedidoBean implements Serializable {
 	}
 	
 	public void buscaItensEPecas() {
-		this.itens = pedidoService.buscaItens(pedidoSelecionado);
-		this.pecas = pedidoService.buscaTodasPecas();
+		
 	}
 	
 	public List<Pedido> getPedidos() {
@@ -96,6 +101,8 @@ public class PedidoBean implements Serializable {
 	
 	public void setPedidoSelecionado(Integer pedidoSelecionado) {
 		this.pedidoSelecionado = pedidoSelecionado;
+		this.itens = pedidoService.buscaItens(pedidoSelecionado);
+		this.pecas = pedidoService.buscaTodasPecas();
 	}
 	
 }
