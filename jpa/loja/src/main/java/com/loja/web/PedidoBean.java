@@ -12,6 +12,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIParameter;
 import javax.faces.event.ActionEvent;
 
+import com.loja.ejb.PecaService;
 import com.loja.ejb.PedidoService;
 import com.loja.model.Item;
 import com.loja.model.Peca;
@@ -30,6 +31,9 @@ public class PedidoBean implements Serializable {
 	
 	@EJB
 	private PedidoService pedidoService;
+	
+	@EJB
+	private PecaService pecaService;
 	
 	private Pedido pedido;
 	private Integer pedidoSelecionado;
@@ -75,10 +79,6 @@ public class PedidoBean implements Serializable {
 		}
 	}
 	
-	public void buscaItensEPecas() {
-		
-	}
-	
 	public List<Pedido> getPedidos() {
 		return pedidos;
 	}
@@ -102,7 +102,7 @@ public class PedidoBean implements Serializable {
 	public void setPedidoSelecionado(Integer pedidoSelecionado) {
 		this.pedidoSelecionado = pedidoSelecionado;
 		this.itens = pedidoService.buscaItens(pedidoSelecionado);
-		this.pecas = pedidoService.buscaTodasPecas();
+		this.pecas = pecaService.buscaTodasPecas();
 	}
 	
 }

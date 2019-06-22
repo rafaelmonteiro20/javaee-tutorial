@@ -13,7 +13,7 @@
 						<h:outputText value="ID" />
 					</f:facet>
 					<h:form>
-						<h:commandLink id="pedido_id_link" actionListener="#{pedidoBean.buscaItensEPecas()}" action="itens">
+						<h:commandLink id="pedido_id_link" action="itens">
 							<h:outputText value="#{pedido.id}" />
 							<f:setPropertyActionListener target="#{pedidoBean.pedidoSelecionado}" value="#{pedido.id}" />
 						</h:commandLink>
