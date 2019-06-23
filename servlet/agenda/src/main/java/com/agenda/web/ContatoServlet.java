@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.annotation.Resource;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -57,7 +58,6 @@ public class ContatoServlet extends HttpServlet {
 			ContatoDao contatoDao = new ContatoDao(dataSource.getConnection());
 			contatoDao.salva(contato);
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new ServletException(e);
 		}
 		
@@ -69,4 +69,24 @@ public class ContatoServlet extends HttpServlet {
 		
 	}
 	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
+			throws ServletException, IOException {
+		
+		
+		ContatoDao contatoDao = null;
+		
+		try {
+			contatoDao = new ContatoDao(dataSource.getConnection());
+		} catch (SQLException e) {
+			throw new ServletException(e);
+		}
+		
+		req.setAttribute("contatos", contatoDao.buscaTodos());
+	
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/contatos/lista.jsp");
+		dispatcher.forward(req, resp);
+	
+	}
+
 }

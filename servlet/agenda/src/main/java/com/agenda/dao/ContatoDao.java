@@ -3,6 +3,7 @@ package com.agenda.dao;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +37,28 @@ public class ContatoDao {
 	}
 	
 	public List<Contato> buscaTodos() {
-		return new ArrayList<Contato>();
+		
+		String sql = " SELECT * FROM contato ";
+		
+		List<Contato> contatos = new ArrayList<>();
+		
+		try(PreparedStatement stmt = conexao.prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery()) {
+			
+			while(rs.next()) {
+				Contato contato = new Contato();
+				contato.setId(rs.getInt("id"));
+				contato.setNome(rs.getString("nome"));
+				contato.setEmail(rs.getString("email"));
+				contato.setEndereco(rs.getString("endereco"));
+				contato.setDataNascimento(rs.getDate("data_nascimento"));
+				contatos.add(contato);
+			}
+
+			return contatos;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
 	}
 	
 }
