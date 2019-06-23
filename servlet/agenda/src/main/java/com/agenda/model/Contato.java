@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Contato {
 
+	private Integer id;
 	private String nome;
 	private String email;
 	private String endereco;
@@ -20,6 +21,14 @@ public class Contato {
 		this.dataNascimento = dataNascimento;
 	}
 
+	public Integer getId() {
+		return id;
+	}
+	
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
 	public String getNome() {
 		return nome;
 	}
@@ -52,4 +61,9 @@ public class Contato {
 		this.dataNascimento = dataNascimento;
 	}
 
+	@Override
+	public String toString() {
+		return nome;
+	}
+	
 }

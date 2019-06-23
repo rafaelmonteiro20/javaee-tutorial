@@ -2,16 +2,20 @@ package com.agenda.web;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
 
+import com.agenda.dao.ContatoDao;
 import com.agenda.model.Contato;
 
 @WebServlet("/contatos")
@@ -21,6 +25,10 @@ public class ContatoServlet extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	@Resource(lookup = "java:jboss/datasources/defaultDS")
+	private DataSource dataSource;
+	
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
@@ -44,6 +52,14 @@ public class ContatoServlet extends HttpServlet {
 		}
 		
 		Contato contato = new Contato(nome, email, endereco, dataNascimento);
+		
+		try {
+			ContatoDao contatoDao = new ContatoDao(dataSource.getConnection());
+			contatoDao.salva(contato);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new ServletException(e);
+		}
 		
 		out.println("<html>");
 		out.println("<body>");
