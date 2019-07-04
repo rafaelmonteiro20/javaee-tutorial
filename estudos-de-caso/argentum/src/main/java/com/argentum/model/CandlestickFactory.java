@@ -1,6 +1,7 @@
 package com.argentum.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CandlestickFactory {
@@ -28,6 +29,35 @@ public class CandlestickFactory {
 				negociacoes.get(negociacoes.size() - 1).getPreco();
 		
 		return new Candlestick(abertura, fechamento, minimo, maximo, volume, data);
+	}
+	
+	public List<Candlestick> criaCandles(List<Negociacao> negociacoes) {
+		
+		List<Candlestick> candles = new ArrayList<>();
+		List<Negociacao> negociacoesDoDia = new ArrayList<>();
+
+		LocalDate dataAtual = negociacoes.get(0).getData();
+		
+		for (Negociacao negociacao : negociacoes) {
+			if(negociacao.getData().isBefore(dataAtual)) {
+				throw new IllegalArgumentException("negociacoes nao estao ordenadas por data");
+			}
+			
+			if(!negociacao.isMesmoDia(dataAtual)) {
+				Candlestick candleDoDia = criaCandleParaData(dataAtual, negociacoesDoDia);
+				candles.add(candleDoDia);
+				
+				negociacoesDoDia = new ArrayList<>();
+				dataAtual = negociacao.getData();
+			}
+			
+			negociacoesDoDia.add(negociacao);
+		}
+		
+		Candlestick candleDoDia = criaCandleParaData(dataAtual, negociacoesDoDia);
+		candles.add(candleDoDia);
+		
+		return candles;
 	}
 	
 }

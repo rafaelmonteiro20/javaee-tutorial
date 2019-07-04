@@ -34,6 +34,10 @@ public class Negociacao {
 	public double getVolume() {
 		return preco * quantidade;
 	}
+	
+	public boolean isMesmoDia(LocalDate data) {
+		return this.data.isEqual(data);
+	}
 
 	@Override
 	public String toString() {
