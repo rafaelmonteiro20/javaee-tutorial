@@ -22,6 +22,7 @@ public class LivroBean implements Serializable {
 	private Livro livro = new Livro();
 	private Integer autorId;
 	private List<Autor> autores;
+	private List<Livro> livros;
 	
 	
 	public void salvar() {
@@ -29,6 +30,12 @@ public class LivroBean implements Serializable {
 			throw new RuntimeException("O livro deve ter pelo menos um autor.");
 		}
 		new Dao<Livro>(Livro.class).salvar(livro);
+		novoLivro();
+	}
+	
+	private void novoLivro() {
+		livro = new Livro();
+		livros = null;	
 	}
 	
 	public void adicionaAutor() {
@@ -45,6 +52,13 @@ public class LivroBean implements Serializable {
 			autores = new Dao<Autor>(Autor.class).listarTodos();
 		}
 		return autores;
+	}
+	
+	public List<Livro> getLivros() {
+		if(livros == null) {
+			livros = new Dao<Livro>(Livro.class).listarTodos();
+		}
+		return livros;
 	}
 	
 	public Integer getAutorId() {
