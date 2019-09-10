@@ -1,6 +1,7 @@
 package com.livraria.model;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -14,6 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "livro")
@@ -29,8 +32,9 @@ public class Livro {
 	
 	private double preco;
 	
+	@Temporal(TemporalType.DATE)
 	@Column(name = "data_lancamento")
-	private String dataLancamento;
+	private Calendar dataLancamento = Calendar.getInstance();
 	
 	@ManyToMany
 	@JoinTable(name = "livro_autor", joinColumns = @JoinColumn(name = "livro_id"), 
@@ -65,11 +69,11 @@ public class Livro {
 		this.preco = preco;
 	}
 
-	public String getDataLancamento() {
+	public Calendar getDataLancamento() {
 		return dataLancamento;
 	}
-
-	public void setDataLancamento(String dataLancamento) {
+	
+	public void setDataLancamento(Calendar dataLancamento) {
 		this.dataLancamento = dataLancamento;
 	}
 	

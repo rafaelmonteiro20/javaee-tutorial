@@ -3,8 +3,13 @@ package com.livraria.bean;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
+import javax.validation.ValidationException;
 
 import com.livraria.dao.Dao;
 import com.livraria.model.Autor;
@@ -27,10 +32,11 @@ public class LivroBean implements Serializable {
 	
 	public void salvar() {
 		if(livro.getAutores().isEmpty()) {
-			throw new RuntimeException("O livro deve ter pelo menos um autor.");
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("O livro deve ter pelo menos um autor."));
+		} else {
+			new Dao<Livro>(Livro.class).salvar(livro);
+			novoLivro();
 		}
-		new Dao<Livro>(Livro.class).salvar(livro);
-		novoLivro();
 	}
 	
 	private void novoLivro() {
@@ -41,6 +47,15 @@ public class LivroBean implements Serializable {
 	public void adicionaAutor() {
 		Autor autorSelecionado = new Dao<Autor>(Autor.class).buscaPorId(autorId);
 		livro.addAutor(autorSelecionado);
+	}
+	
+	public void comecaComDigitoUm(FacesContext context, UIComponent component, 
+			Object value) throws ValidatorException {
+		
+		String isbn = (String) value;
+		if(!isbn.startsWith("1")) {
+			throw new ValidatorException(new FacesMessage("ISBN deve começar com número 1."));
+		}
 	}
 
 	public Livro getLivro() {
