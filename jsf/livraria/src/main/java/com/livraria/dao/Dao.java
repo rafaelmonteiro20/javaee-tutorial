@@ -26,11 +26,19 @@ public class Dao<T> {
 		EntityManager manager = getEntityManager();
 		CriteriaBuilder builder = manager.getCriteriaBuilder();
 		CriteriaQuery<T> query = builder.createQuery(clazz);
+		query.from(clazz);
 		
 		List<T> resultado = manager.createQuery(query).getResultList();
 		manager.close();
 		
 		return resultado;
+	}
+	
+	public T buscaPorId(Integer id) {
+		EntityManager em = getEntityManager();
+		T instancia = em.find(clazz, id);
+		em.close();
+		return instancia;
 	}
 	
 	private EntityManager getEntityManager() {
