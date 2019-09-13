@@ -13,7 +13,7 @@
 		<h1>Livro</h1>
 		
 		<h:form id="formulario" prependId="false">
-			<h:messages />
+			<h:messages id="mensagens" />
 		
 			<fieldset>
 				<legend>Dados do Livro</legend>
@@ -23,10 +23,13 @@
 				    <h:inputText id="titulo" value="#{livroBean.livro.titulo}" required="true" requiredMessage="Título obrigatório"
 				    	validatorMessage="Tamanho máximo permitido 40 caracteres">
 				    	<f:validateLength maximum="40" />
+				    	<f:ajax event="blur" render="mensagens" />
 				    </h:inputText>
 				
 					<label for="isbn">ISBN:</label>
-				    <h:inputText id="isbn" value="#{livroBean.livro.isbn}" validator="#{livroBean.comecaComDigitoUm}" />
+				    <h:inputText id="isbn" value="#{livroBean.livro.isbn}" validator="#{livroBean.comecaComDigitoUm}">
+				    	<f:ajax event="blur" render="mensagens" />
+				    </h:inputText>
 				
 					<label for="preco">Preço:</label>
 				    <h:inputText id="preco" value="#{livroBean.livro.preco}"
@@ -44,14 +47,16 @@
 			<fieldset>
 				<legend>Autores</legend>
 				<label for="autor">Selecione:</label>
-				<h:selectOneMenu value="#{livroBean.autorId}">
+				<h:selectOneMenu id="autor" value="#{livroBean.autorId}">
 					<f:selectItems value="#{livroBean.autores}" var="autor"
 						itemLabel="#{autor.nome}" itemValue="#{autor.id}" />
 				</h:selectOneMenu>
 				
-				<h:commandButton value="Adiciona" action="#{livroBean.adicionaAutor()}" />
+				<h:commandButton value="Adiciona" action="#{livroBean.adicionaAutor()}">
+					<f:ajax execute="autor" render="tabelaAutores" />
+				</h:commandButton>
 				
-				<h:dataTable var="autor" value="#{livroBean.livro.autores}">
+				<h:dataTable id="tabelaAutores" var="autor" value="#{livroBean.livro.autores}">
 					<h:column>
 						<label>#{autor.nome}</label>
 					</h:column>
@@ -60,7 +65,9 @@
 			
 			<br/>
 			
-			<h:commandButton value="Salvar" action="#{livroBean.salvar}" />
+			<h:commandButton value="Salvar" action="#{livroBean.salvar}">
+				<f:ajax execute="@form" render="@form :tabelaLivros" />
+			</h:commandButton>
 		</h:form>
 		
 		<br/>

@@ -12,6 +12,7 @@ public class AutorBean {
 	
 	public void salvar() {
 		new Dao<Autor>(Autor.class).salvar(autor);
+		autor = new Autor();
 	}
 	
 	public Autor getAutor() {
