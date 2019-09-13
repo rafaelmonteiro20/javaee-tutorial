@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>#{msgs.titulo}</title>
+	</h:head>
+	
+	<h:body>
+		<h:form>
+			<h2>#{msgs.cabecalho}</h2>
+			<p>
+				<h:outputFormat value="#{msgs.pontos}">
+					<f:param value="#{quizBean.pontos}" />
+				</h:outputFormat>
+			</p>
+			<p>#{msgs.adivinheProximo}</p>
+			<p>#{quizBean.problema.sequencia}</p>
+			<p>
+				#{msgs.resposta}
+				<h:inputText value="#{quizBean.resposta}" />
+			</p>
+			<p>
+				<h:commandButton value="#{msgs.proximo}" />
+			</p>
+		</h:form>
+	</h:body>
+</html>
