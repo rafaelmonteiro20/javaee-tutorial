@@ -1,0 +1,46 @@
+.navbar-brand {
+	padding-top: 15px;
+	padding-left: 16px;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #efefef;
+}
+
+.link-panel {
+	float: right;
+	padding: 0px;
+}
+
+.titulo-panel {
+	float: left;
+	padding-top: 5px;
+}
+
+.panel-title {
+	font-size: 14px;
+	font-weight: 600;
+}
+
+@media (max-width: 575.98px) {
+	.container {
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+	
+	.navbar-brand {
+		padding-left: 25px;
+	}
+}
+
+.cb-table table tr th {
+	border-bottom-width: 1px;
+	background: #f5f5f5;
+	font-size: 14px;
+	padding: 10px;
+}
+
+.mr-15 {
+	margin-right: 15px;
+}
+

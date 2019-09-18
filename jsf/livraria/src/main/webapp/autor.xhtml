@@ -1,34 +1,31 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     
-    <h:head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>Autor</title>
-	</h:head>
-	
-	<h:body>
-		<h1>Autor</h1>
+    <ui:composition template="/WEB-INF/_template.xhtml">
+		<ui:define name="titulo">Autor</ui:define>
 		
-		<h:form id="formulario" prependId="false">
-			<h:messages />
-		
-			<fieldset>
-				<legend>Dados do Autor</legend>
-		
-				<h:panelGrid columns="2">
-					<label for="titulo">Nome:</label>
-				    <h:inputText id="titulo" value="#{autorBean.autor.nome}"
-				    	required="true" requiredMessage="Nome obrigatório"
-				    	validatorMessage="Tamanho máximo permitido 40 caracteres">
-				    	<f:validateLength maximum="40" />
-				    </h:inputText>
-				
-					<h:commandButton value="Salvar" action="#{autorBean.salvar}" />
-				</h:panelGrid>
-			</fieldset>
-		</h:form>
-	</h:body>
+		<ui:define name="conteudo">
+			<h:form id="formulario" prependId="false">
+				<h:messages />
+			
+				<fieldset>
+					<legend>Dados do Autor</legend>
+			
+					<h:panelGrid columns="2">
+						<label for="titulo">Nome:</label>
+					    <h:inputText id="titulo" value="#{autorBean.autor.nome}"
+					    	required="true" requiredMessage="Nome obrigatório"
+					    	validatorMessage="Tamanho máximo permitido 40 caracteres">
+					    	<f:validateLength maximum="40" />
+					    </h:inputText>
+					
+						<h:commandButton value="Salvar" action="#{autorBean.salvar}" />
+					</h:panelGrid>
+				</fieldset>
+			</h:form>
+		</ui:define>
+	</ui:composition>
 </html>
