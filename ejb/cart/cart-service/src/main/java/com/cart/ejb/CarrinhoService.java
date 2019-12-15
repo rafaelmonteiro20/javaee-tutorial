@@ -7,6 +7,7 @@ import java.util.List;
 import javax.ejb.Remove;
 import javax.ejb.Stateful;
 
+import com.cart.util.IdValidator;
 import com.cart.util.LivroException;
 
 @Stateful
@@ -26,10 +27,7 @@ public class CarrinhoService implements Carrinho, Serializable {
 		if (cliente == null) {
 			throw new LivroException("Cliente é obrigatório.");
 		}
-
-		this.clienteNome = cliente;
-		this.clienteId = "0";
-		this.livros = new ArrayList<>();
+		this.inicializa(cliente, "0");
 	}
 
 	@Override
@@ -37,8 +35,19 @@ public class CarrinhoService implements Carrinho, Serializable {
 		if (cliente == null) {
 			throw new LivroException("Cliente é obrigatório.");
 		}
-		this.clienteNome = cliente;
 
+		IdValidator validador = new IdValidator();
+		if (!validador.validate(id)) {
+			throw new LivroException("Id inválido: " + id);
+		}
+
+		this.inicializa(cliente, id);
+	}
+
+	private void inicializa(String cliente, String id) {
+		this.clienteNome = cliente;
+		this.clienteId = id;
+		this.livros = new ArrayList<>();
 	}
 
 	@Override
@@ -64,7 +73,7 @@ public class CarrinhoService implements Carrinho, Serializable {
 	public void remove() {
 		livros = null;
 	}
-	
+
 	@Override
 	public String toString() {
 		return clienteId + " - " + clienteNome + " - " + livros;
