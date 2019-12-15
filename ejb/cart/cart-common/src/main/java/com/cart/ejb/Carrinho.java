@@ -4,8 +4,10 @@ import java.util.List;
 
 import javax.ejb.Remote;
 
+import com.cart.util.LivroException;
+
 @Remote
-public interface Cart {
+public interface Carrinho {
 	
     void init(String cliente) throws LivroException;
     

@@ -10,7 +10,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-  	<artifactId>cart-common</artifactId>
-  	<name>cart-common</name>
-  	
+	<artifactId>cart-common</artifactId>
+	<name>cart-common</name>
+
 </project>
