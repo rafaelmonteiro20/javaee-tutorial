@@ -16,5 +16,6 @@
     <modules>
         <module>cart-common</module>
         <module>cart-service</module>
+        <module>cart-web</module>
     </modules>
 </project>
