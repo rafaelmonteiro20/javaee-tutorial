@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.converter.ejb.ConverterBean;
 
-@WebServlet(urlPatterns="/")
+@WebServlet(urlPatterns = "/")
 public class ConverterServlet extends HttpServlet {
 
 	/**
@@ -23,38 +23,37 @@ public class ConverterServlet extends HttpServlet {
 
 	@EJB
 	private ConverterBean converter;
-	
+
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		response.setContentType("text/html;charset=UTF-8");
-	    
+
 		PrintWriter out = response.getWriter();
-	    out.println("<html lang=\"en\">");
-	    out.println("<head>");
-	    out.println("<title>Servlet ConverterServlet</title>");
-	    out.println("</head>");
-	    out.println("<body>");
-	    out.println("<h1>Servlet ConverterServlet</h1>");
-		
-	    try {
-            String amount = request.getParameter("amount");
-            if (amount != null && amount.length() > 0) {
-            	BigDecimal reais = new BigDecimal(amount);
-                BigDecimal dollar = converter.realToDollar(reais);
+		out.println("<html lang=\"en\">");
+		out.println("<head>");
+		out.println("<title>Servlet ConverterServlet</title>");
+		out.println("</head>");
+		out.println("<body>");
+		out.println("<h1>Servlet ConverterServlet</h1>");
 
-                out.println("<p>" + amount + " reais are " +
-                        dollar.toPlainString() + " dollar.</p>");
-            } else {
-                out.println("<p>Enter a real amount to convert");
-            }
+		try {
+			String amount = request.getParameter("amount");
+			if (amount != null && amount.length() > 0) {
+				BigDecimal reais = new BigDecimal(amount);
+				BigDecimal dollar = converter.realToDollar(reais);
 
-        } finally {
-            out.println("</body>");
-            out.println("</html>");
-            out.close();
-        }
+				out.println("<p>" + amount + " reais are " + dollar.toPlainString() + " dollar.</p>");
+			} else {
+				out.println("<p>Enter a real amount to convert");
+			}
+
+		} finally {
+			out.println("</body>");
+			out.println("</html>");
+			out.close();
+		}
 	}
-	
+
 }

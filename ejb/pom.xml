@@ -25,6 +25,8 @@
 
 	<modules>
 		<module>cart</module>
+		<module>cobranca</module>
+		<module>converter</module>
 		<module>counter</module>
 	</modules>
 
