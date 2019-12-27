@@ -26,7 +26,7 @@ public class CalculadoraDeSalario {
         double aumentoAntiguidade = anosTrabalhados / 100;
         salario = salario * (1 + aumentoAntiguidade);
 
-        if(anosTrabalhados > 5){
+        if (anosTrabalhados > 5) {
             salario = salario * 1.1;
         }
         
