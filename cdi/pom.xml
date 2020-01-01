@@ -26,6 +26,7 @@
     <modules>
     	<module>encoder</module>
         <module>palpite-certo</module>
+        <module>producer-methods</module>
 		<module>tarefas</module>
 	</modules>
 
