@@ -24,6 +24,7 @@
 	</dependencies>
   
     <modules>
+    	<module>encoder</module>
         <module>palpite-certo</module>
 		<module>tarefas</module>
 	</modules>
