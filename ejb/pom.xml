@@ -28,6 +28,7 @@
 		<module>cobranca</module>
 		<module>converter</module>
 		<module>counter</module>
+		<module>temporizador</module>
 	</modules>
 
 	<build>
