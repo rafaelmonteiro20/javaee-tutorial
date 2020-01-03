@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://xmlns.jcp.org/jsf/html"
+	  xmlns:f="http://xmlns.jcp.org/jsf/core">
+	
+	<h:head>
+		<title>Encoder</title>
+	</h:head>
+
+	<h:body>
+		<h2>Encoder</h2>
+		<p>Informe um texto e um número. O valor deve ser entre 0 e 26.</p>
+	
+		<h:form prependId="false">
+			<h:messages showSummary="true" showDetail="false" errorStyle="color: #d20005" infoStyle="color: blue" />
+
+			<p>
+				<h:selectOneRadio id="tipo" value="#{coderBean.tipoCoder}" required="true">
+                	<f:selectItem itemValue="1" itemLabel="Teste" />
+                	<f:selectItem itemValue="2" itemLabel="Shift Letras" />
+            	</h:selectOneRadio>
+			</p>
+
+			<p>
+				<h:outputLabel value="Texto: " for="texto" />
+				<h:inputText id="texto" value="#{coderBean.texto}" />
+			</p>
+			
+			<p>
+				<h:outputLabel value="Informe o número de letras para realizar o shift: " for="numero" />
+				<h:inputText id="numero" value="#{coderBean.numeroCaracteresShift}" />
+			</p>
+			
+			<p>
+				<h:commandButton value="Encode" action="#{coderBean.encode()}" />
+			</p>
+			
+			<p>
+				<h:outputLabel value="Resultado: " for="resultado" />
+				<h:outputText id="resultado" value="#{coderBean.resultado}" />
+			</p>
+			
+			<p>
+				<h:commandButton value="Resetar" action="#{coderBean.reset}" />
+			</p>
+		</h:form>
+	</h:body>
+</html>
