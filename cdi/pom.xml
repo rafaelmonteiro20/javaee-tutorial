@@ -9,24 +9,25 @@
 	<packaging>pom</packaging>
 
 	<name>cdi</name>
-	
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
-	
+
 	<dependencies>
 		<dependency>
-	      	<groupId>javax</groupId>
-	      	<artifactId>javaee-api</artifactId>
-	      	<version>7.0</version>
-	      	<scope>provided</scope>
-	    </dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>7.0</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
-  
-    <modules>
-    	<module>encoder</module>
-        <module>palpite-certo</module>
-        <module>producer-methods</module>
+
+	<modules>
+		<module>encoder</module>
+		<module>financeiro</module>
+		<module>palpite-certo</module>
+		<module>producer-methods</module>
 		<module>tarefas</module>
 	</modules>
 
