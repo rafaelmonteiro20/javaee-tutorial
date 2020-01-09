@@ -24,6 +24,8 @@
 	</dependencies>
 
 	<modules>
+		<module>customer</module>
+		<module>evento</module>
 		<module>hello</module>
 	</modules>
 
