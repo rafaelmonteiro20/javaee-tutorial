@@ -18,6 +18,7 @@ import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @Table(name = "evento")
@@ -45,6 +46,7 @@ public class Evento implements Serializable {
     @ManyToOne
     private Pessoa proprietario;
 
+    @XmlTransient
     @OneToMany(mappedBy = "evento")
     private List<Convite> convidados = new ArrayList<>();
 
