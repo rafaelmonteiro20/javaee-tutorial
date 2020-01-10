@@ -13,7 +13,6 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @Table(name = "convite")
@@ -30,8 +29,8 @@ public class Convite implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    @XmlTransient
     @ManyToOne
+    @JoinColumn(name = "evento_id")
     private Evento evento;
     
     @ManyToOne
@@ -39,12 +38,16 @@ public class Convite implements Serializable {
     private Pessoa pessoa;
     
     @Enumerated(EnumType.STRING)
-    private StatusConvite status;
+    private StatusConvite status = StatusConvite.NAO_RESPONDIDO;
 
     public Convite() {
-        this.status = StatusConvite.NAO_RESPONDIDO;
+
     }
 
+    public Convite(Long id) {
+        this.id = id;
+    }
+    
     public Convite(Evento evento, Pessoa pessoa) {
         this(evento, pessoa, StatusConvite.NAO_RESPONDIDO);
     }
@@ -57,10 +60,6 @@ public class Convite implements Serializable {
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Evento getEvento() {
@@ -81,10 +80,6 @@ public class Convite implements Serializable {
 
     public StatusConvite getStatus() {
         return status;
-    }
-
-    public void setStatus(StatusConvite status) {
-        this.status = status;
     }
 
     @Override

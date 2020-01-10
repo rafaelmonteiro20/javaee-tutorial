@@ -3,6 +3,7 @@ package com.evento.resource;
 import java.net.URI;
 import java.util.List;
 
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -17,6 +18,7 @@ import com.evento.model.Evento;
 import com.evento.repository.EventoRepository;
 
 @Path("/eventos")
+@RequestScoped
 public class EventoResource {
 
     @Inject
@@ -31,7 +33,8 @@ public class EventoResource {
     @POST
     @Consumes("application/json")
     public Response salva(Evento evento) {
-        return Response.created(URI.create("/")).build();
+        evento = eventoRepository.salva(evento);
+        return Response.created(URI.create("/eventos/" + evento.getId())).build();
     }
     
     @GET

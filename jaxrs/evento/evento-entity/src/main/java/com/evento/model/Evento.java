@@ -1,29 +1,25 @@
 package com.evento.model;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
+import javax.jms.JMSSessionMode;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @Table(name = "evento")
-@XmlRootElement(name = "Evento")
-@XmlAccessorType(XmlAccessType.FIELD)
 public class Evento implements Serializable {
 
     /**
@@ -40,15 +36,15 @@ public class Evento implements Serializable {
     private String localizacao;
 
     @Column(name = "data_hora")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dataHora;
+    private LocalDateTime dataHora;
 
     @ManyToOne
+    @JoinColumn(name = "id_proprietario")
     private Pessoa proprietario;
 
-    @XmlTransient
-    @OneToMany(mappedBy = "evento")
+    @OneToMany(mappedBy = "evento", cascade = CascadeType.ALL)
     private List<Convite> convidados = new ArrayList<>();
+    
 
     public Evento() {
 
@@ -82,11 +78,11 @@ public class Evento implements Serializable {
         this.localizacao = localizacao;
     }
 
-    public Date getDataHora() {
+    public LocalDateTime getDataHora() {
         return dataHora;
     }
 
-    public void setDataHora(Date dataHora) {
+    public void setDataHora(LocalDateTime dataHora) {
         this.dataHora = dataHora;
     }
 
@@ -104,6 +100,11 @@ public class Evento implements Serializable {
 
     public void setConvidados(List<Convite> convidados) {
         this.convidados = convidados;
+    }
+    
+    @XmlTransient
+    public boolean isRealizado() {
+        return LocalDateTime.now().isAfter(dataHora);
     }
     
     @Override
