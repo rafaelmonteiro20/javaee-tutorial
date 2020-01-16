@@ -1,4 +1,4 @@
-package com.loja;
+package com.loja.resource;
 
 import static org.junit.Assert.assertEquals;
 
@@ -11,10 +11,11 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.loja.Servidor;
 import com.loja.model.Carrinho;
 import com.thoughtworks.xstream.XStream;
 
-public class ClienteTest {
+public class CarrinhoResourceTest {
 
 	private HttpServer server;
 	
@@ -27,7 +28,7 @@ public class ClienteTest {
 	public void deveBuscarCarrinho() throws Exception {
 		Client client = ClientBuilder.newClient();
 		WebTarget target = client.target("http://localhost:8080");
-		WebTarget path = target.path("/carrinhos");
+		WebTarget path = target.path("/carrinhos/1");
 		String conteudo = path.request().get(String.class);
 		
 		Carrinho carrinho = (Carrinho) new XStream().fromXML(conteudo);
