@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.billpayment.model.Pagamento;
+import com.billpayment.model.TipoPagamento;
 import com.billpayment.service.PagamentoService;
 
 @Named
@@ -32,6 +33,10 @@ public class PagamentoBean implements Serializable {
     public String paga() {
         pagamentoService.paga(pagamento);
         return "response";
+    }
+    
+    public TipoPagamento[] getTiposDePagamento() {
+        return TipoPagamento.values();
     }
 
     public Pagamento getPagamento() {

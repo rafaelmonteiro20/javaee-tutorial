@@ -1,5 +1,6 @@
 package com.billpayment.service;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.logging.Logger;
 
@@ -11,7 +12,12 @@ import com.billpayment.model.Pagamento;
 import com.billpayment.service.annotation.Credito;
 import com.billpayment.service.annotation.Debito;
 
-public class PagamentoService {
+public class PagamentoService implements Serializable {
+
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
 
     private static final Logger logger = Logger.getLogger(PagamentoService.class.getCanonicalName());
     
