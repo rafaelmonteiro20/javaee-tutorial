@@ -33,6 +33,7 @@
 		<module>customer</module>
 		<module>evento</module>
 		<module>hello</module>
+		<module>loja</module>
 	</modules>
 
 	<build>
