@@ -26,6 +26,7 @@
 	<modules>
 		<module>confirmacao</module>
 		<module>even</module>
+		<module>grupos-validacao</module>
 	</modules>
 
 	<build>
