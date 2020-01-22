@@ -16,9 +16,10 @@
 
 	<dependencies>
 		<dependency>
-		    <groupId>org.hibernate</groupId>
-		    <artifactId>hibernate-validator</artifactId>
-		    <version>5.4.1.Final</version>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>7.0</version>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 
@@ -35,9 +36,6 @@
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
-					<configuration>
-		                <failOnMissingWebXml>false</failOnMissingWebXml>
-		            </configuration>
 				</configuration>
 			</plugin>
 		</plugins>
