@@ -24,6 +24,7 @@
 	</dependencies>
 
 	<modules>
+		<module>confirmacao</module>
 		<module>even</module>
 	</modules>
 
