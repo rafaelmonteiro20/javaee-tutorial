@@ -2,11 +2,9 @@ package com.confirmacao.model;
 
 import com.confirmacao.validator.Confirmacao;
 
-@Confirmacao(
-        campo = "email",
-        campoCorrespondente = "confirmacaoEmail",
-        message = "Emails não correspondem."
-)
+
+@Confirmacao(campo = "email", campoCorrespondente = "confirmacaoEmail", message = "Emails não correspondem.")
+@Confirmacao(campo = "senha", campoCorrespondente = "confirmacaoSenha", message = "Senhas não correspondem.")
 public class Usuario {
 
     private String nome;
