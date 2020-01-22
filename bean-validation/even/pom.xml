@@ -6,6 +6,10 @@
     <artifactId>even</artifactId>
     <name>even</name>
     
+    <properties>
+        <failOnMissingWebXml>false</failOnMissingWebXml>
+    </properties>
+    
     <parent>
         <artifactId>bean-validation</artifactId>
         <groupId>com.rm</groupId>
