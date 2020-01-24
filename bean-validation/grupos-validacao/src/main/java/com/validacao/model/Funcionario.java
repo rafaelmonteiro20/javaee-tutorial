@@ -36,42 +36,22 @@ public class Funcionario {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public BigDecimal getSalario() {
         return salario;
-    }
-
-    public void setSalario(BigDecimal salario) {
-        this.salario = salario;
     }
 
     public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
     public String getEndereco() {
         return endereco;
-    }
-
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
     }
 
     public String getCidade() {
         return cidade;
     }
 
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
-    
     public static class FuncionarioBuilder {
         
         Funcionario funcionario = new Funcionario();
@@ -80,7 +60,23 @@ public class Funcionario {
             funcionario.nome = nome;
             return this;
         }
-        
+
+        public FuncionarioBuilder comSalario(String salario) {
+            funcionario.salario = new BigDecimal(salario);
+            return this;
+        }
+
+        public FuncionarioBuilder comTelefone(String telefone) {
+            funcionario.telefone = telefone;
+            return this;
+        }
+
+        public FuncionarioBuilder comEndereco(String endereco, String cidade) {
+            funcionario.endereco = endereco;
+            funcionario.cidade = cidade;
+            return this;
+        }
+
         public Funcionario build() {
             return funcionario;
         }
