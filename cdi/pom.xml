@@ -26,6 +26,7 @@
 	<modules>
 		<module>bill-payment</module>
 		<module>cronometro</module>
+		<module>decorator</module>
 		<module>encoder</module>
 		<module>financeiro</module>
 		<module>palpite-certo</module>
