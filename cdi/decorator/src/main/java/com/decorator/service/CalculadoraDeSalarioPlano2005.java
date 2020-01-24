@@ -3,7 +3,6 @@ package com.decorator.service;
 import com.decorator.model.Escolaridade;
 import com.decorator.model.Funcionario;
 
-
 public class CalculadoraDeSalarioPlano2005 implements CalculadoraDeSalario {
 
     @Override
