@@ -26,6 +26,7 @@
 	<modules>
 		<module>agenda</module>
 		<module>fileupload</module>
+		<module>hello</module>
 		<module>humor</module>
 	</modules>
 
