@@ -2,6 +2,8 @@ package com.roster.commons.dto;
 
 import java.io.Serializable;
 
+import com.roster.commons.model.Esporte;
+
 public class LigaDTO implements Serializable {
 
     /**
@@ -11,9 +13,9 @@ public class LigaDTO implements Serializable {
 
     private String id;
     private String nome;
-    private String esporte;
+    private Esporte esporte;
 
-    public LigaDTO(String id, String nome, String esporte) {
+    public LigaDTO(String id, String nome, Esporte esporte) {
         this.id = id;
         this.nome = nome;
         this.esporte = esporte;
@@ -27,7 +29,7 @@ public class LigaDTO implements Serializable {
         return nome;
     }
 
-    public String getEsporte() {
+    public Esporte getEsporte() {
         return esporte;
     }
 

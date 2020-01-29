@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Remote;
 
 import com.roster.commons.dto.JogadorDTO;
+import com.roster.commons.model.Esporte;
 
 @Remote
 public interface JogadorService {
@@ -29,7 +30,7 @@ public interface JogadorService {
 
     List<JogadorDTO> buscaPorSalario(double minimo, double maximo);
     
-    List<JogadorDTO> buscaPorEsporte(String esporte);
+    List<JogadorDTO> buscaPorEsporte(Esporte esporte);
     
     List<JogadorDTO> buscaJogadoresSemTime();
 
