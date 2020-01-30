@@ -15,5 +15,6 @@
 
     <modules>
         <module>roster-common</module>
+        <module>roster-service</module>
     </modules>
 </project>
