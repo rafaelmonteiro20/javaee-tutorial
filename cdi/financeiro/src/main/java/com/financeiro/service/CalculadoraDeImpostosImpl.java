@@ -6,15 +6,20 @@ import com.financeiro.model.Funcionario;
 
 public class CalculadoraDeImpostosImpl implements CalculadoraDeImpostos {
 
+    @Inject
     private CalculadoraDeSalario calculadoraDeSalario;
 
-    @Inject
+    public CalculadoraDeImpostosImpl() {
+
+    }
+    
     public CalculadoraDeImpostosImpl(CalculadoraDeSalario calculadoraDeSalario) {
         this.calculadoraDeSalario = calculadoraDeSalario;
     }
 
     @Override
     public double calcula(Funcionario funcionario) {
+
         double salario = calculadoraDeSalario.calcula(funcionario);
 
         double aliquota = 0.0;

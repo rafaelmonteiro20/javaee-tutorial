@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <h:head>
+        <title>Bill Payment</title>
+    </h:head>
+    
+    <h:body>
+        <h3>Bill Payment</h3>
+        <p>Informe o valor, selecione cartão de débito ou Cartão de crédito e então clique em pagar.</p>
+        
+        <h:form>
+            <table>
+                <tr>
+                    <td><h:outputLabel value="Valor: R$ " for="valor" /></td>
+		            <td>
+		                <h:inputText id="valor" value="#{pagamentoBean.pagamento.valor}" 
+		                      required="true" requiredMessage="Valor é obrigatório"
+		                      maxlength="15" />
+		            </td>
+                </tr>
+                
+                <tr>
+                    <td><h:outputLabel value="Tipo Pagamento: " for="tipo" /></td>
+                    <td>
+	                    <h:selectOneRadio id="tipo" value="#{pagamentoBean.pagamento.tipoPagamento}">
+			                <f:selectItems value="#{pagamentoBean.tiposDePagamento}" var="tipo"
+			                     itemLabel="#{tipo.descricao}" itemValue="#{tipo}" />
+			            </h:selectOneRadio>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td>
+                        <h:commandButton value="Pagar" action="#{pagamentoBean.paga()}" />
+                        <h:commandButton value="Limpar" action="#{pagamentoBean.init()}" />
+                    </td>
+                </tr>
+            </table>
+        </h:form>
+        
+        <div>
+            <h:messages showSummary="true" 
+                        showDetail="false"
+                        errorStyle="color: #d20005" 
+                        infoStyle="color: blue"/>
+        </div>
+    </h:body>
+</html>

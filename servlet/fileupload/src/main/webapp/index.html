@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Upload de Arquivo</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <form method="POST" action="upload" enctype="multipart/form-data" >
+            <table>
+                <tr>
+                    <td>Arquivo</td>
+                    <td><input id="arquivo" type="file" name="arquivo" /></td>
+                </tr>
+                <tr>
+                    <td>Destino</td>
+                    <td><input id="destino" type="text" name="destino" value="c:/arquivos"/></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>                
+                        <input type="submit" value="Upload" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

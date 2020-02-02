@@ -4,8 +4,4 @@
        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd"
        version="1.1" bean-discovery-mode="all">
        
-    <alternatives>
-        <class>com.financeiro.service.CalculadoraDeSalarioPlano2020</class>
-    </alternatives>
-    
 </beans>

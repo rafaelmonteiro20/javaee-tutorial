@@ -1,6 +1,6 @@
-package com.financeiro.service;
+package com.decorator.service;
 
-import com.financeiro.model.Funcionario;
+import com.decorator.model.Funcionario;
 
 public interface CalculadoraDeSalario {
 

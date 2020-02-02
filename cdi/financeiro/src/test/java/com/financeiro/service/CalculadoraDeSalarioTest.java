@@ -17,7 +17,7 @@ public class CalculadoraDeSalarioTest {
     
     @Before
     public void init() {
-        this.calculadora = new CalculadoraDeSalario();
+        this.calculadora = new CalculadoraDeSalarioPlano2005();
     }
     
     @Test
